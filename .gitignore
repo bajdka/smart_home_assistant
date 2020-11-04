@@ -8,3 +8,4 @@ www
 secrets.yaml
 *.log
 *.db
+*.db-*

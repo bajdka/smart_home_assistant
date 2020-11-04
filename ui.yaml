@@ -1,0 +1,603 @@
+title: Dom
+views:
+  - path: default_view
+    title: Home
+    badges: []
+    cards:
+      - type: weather-forecast
+        entity: weather.dom
+        show_forecast: false
+      - type: 'custom:mini-media-player'
+        entity: media_player.google_home_mini
+        artwork: cover
+        icon: 'mdi:spotify'
+        hide:
+          progress: true
+        shortcuts:
+          columns: 6
+          buttons:
+            - icon: 'mdi:circle-outline'
+              type: service
+              id: spotcast.start
+              data:
+                entity_id: media_player.google_home_mini
+                uri: 'spotify:playlist:37i9dQZEVXcP6m7bJPpwDR'
+                random_song: true
+                shuffle: true
+            - icon: 'mdi:triangle-outline'
+              type: service
+              id: spotcast.start
+              data:
+                entity_id: media_player.google_home_mini
+                uri: 'spotify:playlist:37i9dQZEVXcJRP9nLR5mgF'
+                random_song: true
+                shuffle: true
+            - icon: 'mdi:bullhorn-outline'
+              type: service
+              id: spotcast.start
+              data:
+                entity_id: media_player.google_home_mini
+                uri: 'spotify:playlist:37i9dQZEVXbmlA9Z8SOJum'
+                random_song: true
+                shuffle: true
+            - icon: 'mdi:heart-outline'
+              type: service
+              id: spotcast.start
+              data:
+                entity_id: media_player.google_home_mini
+                uri: 'spotify:playlist:6nMKWDPY53oqrskmEXRRHG'
+                random_song: true
+                shuffle: true
+            - icon: 'mdi:star-outline'
+              type: service
+              id: spotcast.start
+              data:
+                entity_id: media_player.google_home_mini
+                uri: 'spotify:playlist:2n5h71wyC4GBT728LXBAOq'
+                random_song: true
+                shuffle: true
+            - icon: 'mdi:cloud-outline'
+              type: service
+              id: spotcast.start
+              data:
+                entity_id: media_player.google_home_mini
+                uri: 'spotify:playlist:74sUjcvpGfdOvCHvgzNEDO'
+                random_song: true
+                shuffle: true
+      - type: 'custom:stack-in-card'
+        mode: vertical
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: 'custom:button-card'
+                show_state: false
+                show_name: false
+                entity: person.malinka
+                show_entity_picture: true
+                styles:
+                  card:
+                    - width: 50px
+                    - margin-top: 16px
+                    - margin-left: 22px
+                  entity_picture:
+                    - width: 45px
+                    - height: 45px
+                    - border-radius: 50%
+                    - justify-self: start
+                    - align-self: middle
+                  img_cell:
+                    - padding: 0px
+                    - margin: 0px
+              - type: 'custom:button-card'
+                name: Salon
+                styles:
+                  name:
+                    - font-size: 15px
+                    - margin-left: 20px
+                    - margin-top: 17px
+                    - align-self: start
+                    - justify-self: start
+                    - color: '#F2F2F2'
+              - type: vertical-stack
+                cards:
+                  - type: 'custom:button-card'
+                    layout: icon_state
+                    entity: sensor.salon_czujnik_temperatury_temperature
+                    show_state: false
+                    show_label: true
+                    show_name: false
+                    show_icon: false
+                    styles:
+                      card:
+                        - margin-top: 16px
+                        - padding-bottom: 0px
+                      label:
+                        - justify-self: end
+                        - margin-right: 15px
+                    label: >
+                      [[[ return `<span style="color:#F2F2F2;
+                      font-size:22px">${entity.state}</span><span
+                      style="color:#F2F2F2; font-size:16px">°C</span>`; ]]]
+                  - type: 'custom:button-card'
+                    layout: icon_state
+                    entity: sensor.salon_czujnik_temperatury_humidity
+                    show_state: false
+                    show_name: false
+                    show_icon: false
+                    show_label: true
+                    label: |
+                      [[[
+                        return entity.state + ' %';
+                      ]]]
+                    styles:
+                      card:
+                        - padding-bottom: 5px
+                      label:
+                        - font-size: 14px
+                        - color: '#A2A2A2'
+                        - justify-self: end
+                        - align-self: start
+                        - margin-top: '-6px'
+                        - margin-right: 18px
+          - type: horizontal-stack
+            cards:
+              - type: 'custom:button-card'
+                entity: light.lampa_sufitowa_2
+                icon: 'mdi:ceiling-light'
+                show_state: false
+                show_name: false
+                styles:
+                  card:
+                    - width: 60px
+                    - height: 60px
+                    - margin-left: 15px
+                double_tap_action:
+                  action: more-info
+              - type: 'custom:button-card'
+                entity: light.hue_go
+                icon: 'mdi:lava-lamp'
+                show_state: false
+                show_name: false
+                double_tap_action:
+                  action: more-info
+                styles:
+                  card:
+                    - width: 60px
+                    - height: 60px
+              - type: 'custom:button-card'
+                layout: blank-card
+              - type: 'custom:button-card'
+                entity: script.goodmorning
+                show_state: false
+                show_name: false
+                tap_action:
+                  action: toggle
+                styles:
+                  card:
+                    - width: 60px
+                    - height: 60px
+              - type: 'custom:button-card'
+                entity: script.clean_living_room
+                icon: 'mdi:broom'
+                show_state: false
+                show_name: false
+                tap_action:
+                  action: toggle
+                styles:
+                  card:
+                    - width: 60px
+                    - height: 60px
+              - type: 'custom:button-card'
+                entity: script.tv_time
+                show_state: false
+                show_name: false
+                tap_action:
+                  action: toggle
+                styles:
+                  card:
+                    - width: 60px
+                    - height: 60px
+                    - margin-right: 15px
+      - type: 'custom:stack-in-card'
+        mode: vertical
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: 'custom:button-card'
+                show_state: false
+                show_name: false
+                entity: person.kotek
+                show_entity_picture: true
+                styles:
+                  card:
+                    - width: 50px
+                    - margin-top: 15px
+                    - margin-left: 22px
+                  entity_picture:
+                    - width: 45px
+                    - height: 45px
+                    - border-radius: 50%
+                    - justify-self: start
+                    - align-self: middle
+                  img_cell:
+                    - padding: 0px
+                    - margin: 0px
+              - type: 'custom:button-card'
+                name: Sypialnia
+                styles:
+                  name:
+                    - font-size: 16px
+                    - margin-left: 20px
+                    - margin-top: 17px
+                    - align-self: start
+                    - justify-self: start
+                    - color: '#F2F2F2'
+              - type: vertical-stack
+                cards:
+                  - type: 'custom:button-card'
+                    layout: icon_state
+                    entity: sensor.sypialnia_czujnik_temperatury_temperature
+                    show_state: false
+                    show_label: true
+                    show_name: false
+                    show_icon: false
+                    styles:
+                      card:
+                        - margin-top: 16px
+                        - padding-bottom: 0px
+                      label:
+                        - justify-self: end
+                        - margin-right: 15px
+                    label: >
+                      [[[ return `<span style="color:#F2F2F2;
+                      font-size:22px">${entity.state}</span><span
+                      style="color:#F2F2F2; font-size:16px">°C</span>`; ]]]
+                  - type: 'custom:button-card'
+                    layout: icon_state
+                    entity: sensor.sypialnia_czujnik_temperatury_humidity
+                    show_state: false
+                    show_name: false
+                    show_icon: false
+                    show_label: true
+                    label: |
+                      [[[
+                        return entity.state + ' %';
+                      ]]]
+                    styles:
+                      card:
+                        - padding-bottom: 5px
+                      label:
+                        - font-size: 14px
+                        - color: '#A2A2A2'
+                        - justify-self: end
+                        - align-self: start
+                        - margin-top: '-6px'
+                        - margin-right: 18px
+          - type: horizontal-stack
+            cards:
+              - type: 'custom:button-card'
+                entity: light.lampa_sufitowa
+                icon: 'mdi:ceiling-light'
+                show_state: false
+                show_name: false
+                styles:
+                  card:
+                    - width: 60px
+                    - height: 60px
+                    - margin-left: 15px
+                double_tap_action:
+                  action: more-info
+              - type: 'custom:button-card'
+                entity: light.lampka_nocna
+                icon: 'mdi:desk-lamp'
+                show_state: false
+                show_name: false
+                double_tap_action:
+                  action: more-info
+                styles:
+                  card:
+                    - width: 60px
+                    - height: 60px
+                    - '--mdc-ripple-color': gray
+              - type: 'custom:button-card'
+                layout: blank-card
+              - type: 'custom:button-card'
+                entity: script.clean_bedroom
+                icon: 'mdi:broom'
+                show_state: false
+                show_name: false
+                tap_action:
+                  action: toggle
+                styles:
+                  card:
+                    - width: 60px
+                    - height: 60px
+              - type: 'custom:button-card'
+                entity: script.goodnight
+                show_state: false
+                show_name: false
+                tap_action:
+                  action: toggle
+                styles:
+                  card:
+                    - width: 60px
+                    - height: 60px
+                    - margin-right: 15px
+      - type: horizontal-stack
+        cards:
+          - type: 'custom:stack-in-card'
+            mode: vertical
+            cards:
+              - type: horizontal-stack
+                cards:
+                  - type: 'custom:button-card'
+                    name: Kuchnia
+                    styles:
+                      name:
+                        - font-size: 15px
+                        - margin-top: 10px
+                        - margin-left: 25px
+                        - align-self: start
+                        - justify-self: start
+                        - color: '#F2F2F2'
+              - type: horizontal-stack
+                cards:
+                  - type: 'custom:button-card'
+                    entity: switch.76886533cc50e3ed7572
+                    icon: 'mdi:track-light'
+                    show_state: false
+                    show_name: false
+                    styles:
+                      card:
+                        - width: 60px
+                        - height: 60px
+                        - margin-left: 5px
+                  - type: 'custom:button-card'
+                    entity: script.clean_bathroom
+                    icon: 'mdi:broom'
+                    show_state: false
+                    show_name: false
+                    tap_action:
+                      action: toggle
+                    styles:
+                      card:
+                        - width: 60px
+                        - height: 60px
+          - type: 'custom:stack-in-card'
+            mode: vertical
+            cards:
+              - type: horizontal-stack
+                cards:
+                  - type: 'custom:button-card'
+                    name: Łazienka
+                    styles:
+                      name:
+                        - font-size: 15px
+                        - margin-top: 10px
+                        - margin-left: 25px
+                        - align-self: start
+                        - justify-self: start
+                        - color: '#F2F2F2'
+              - type: horizontal-stack
+                cards:
+                  - type: 'custom:button-card'
+                    entity: script.clean_kitchen
+                    icon: 'mdi:broom'
+                    show_state: false
+                    show_name: false
+                    tap_action:
+                      action: toggle
+                    styles:
+                      card:
+                        - width: 60px
+                        - height: 60px
+                        - margin-left: 5px
+      - type: 'custom:stack-in-card'
+        mode: vertical
+        cards:
+          - type: 'custom:button-card'
+            name: Vacuum
+            entity: vacuum.xiaomi_vacuum_cleaner
+            show_state: true
+            layout: icon_name_state
+            extra_styles: |
+              @keyframes mysecond {
+                0%   {left:0px; bottom:0px;}
+                25%  {left:3px; bottom:0px;}
+                50%  {left:3px; bottom:3px;}
+                75%  {left:0px; bottom:3px;}
+                100% {left:0px; bottom:0px;}
+              }
+            styles:
+              icon:
+                - height: 25px
+                - margin-left: 5px
+                - color: 'rgb(168, 177, 188)'
+                - padding: 5px
+              name:
+                - font-size: 15px
+                - justify-self: start
+                - margin-left: '-35%'
+              state:
+                - font-size: 15px
+                - justify-self: start
+              card:
+                - margin-bottom: '-10px'
+            state:
+              - value: paused
+                icon: 'mdi:sleep'
+              - value: cleaning
+                styles:
+                  icon:
+                    - color: '#32CBFF'
+                    - animation: mysecond 2s linear 1s infinite normal
+          - type: 'custom:xiaomi-vacuum-card'
+            entity: vacuum.xiaomi_vacuum_cleaner
+            attributes: false
+            name: false
+            state: false
+      - type: 'custom:mini-media-player'
+        entity: media_player.samsung_tv_remote
+        icon: 'mdi:television-classic'
+        name: TV
+        hide:
+          controls: true
+        shortcuts:
+          hide_when_off: true
+          columns: 6
+          buttons:
+            - name: OK
+              type: service
+              id: media_player.play_media
+              data:
+                entity_id: media_player.samsung_tv_remote
+                media_content_type: send_key
+                media_content_id: KEY_ENTER
+            - icon: 'mdi:keyboard-return'
+              type: service
+              id: media_player.play_media
+              data:
+                entity_id: media_player.samsung_tv_remote
+                media_content_type: send_key
+                media_content_id: KEY_RETURN
+            - icon: 'mdi:arrow-left'
+              type: service
+              id: media_player.play_media
+              data:
+                entity_id: media_player.samsung_tv_remote
+                media_content_type: send_key
+                media_content_id: KEY_LEFT
+            - icon: 'mdi:arrow-right'
+              type: service
+              id: media_player.play_media
+              data:
+                entity_id: media_player.samsung_tv_remote
+                media_content_type: send_key
+                media_content_id: KEY_RIGHT
+            - icon: 'mdi:arrow-up'
+              type: service
+              id: media_player.play_media
+              data:
+                entity_id: media_player.samsung_tv_remote
+                media_content_type: send_key
+                media_content_id: KEY_UP
+            - icon: 'mdi:arrow-down'
+              type: service
+              id: media_player.play_media
+              data:
+                entity_id: media_player.samsung_tv_remote
+                media_content_type: send_key
+                media_content_id: KEY_DOWN
+  - title: Plants
+    path: plants
+    icon: 'mdi:sprout'
+    badges: []
+    cards:
+      - type: entities
+        entities:
+          - entity: counter.aloes
+          - entity: counter.zielistka
+          - entity: counter.fikus_big
+          - entity: counter.fikus_small
+          - entity: counter.sansewieria_mala
+          - entity: counter.sansewieria_mini
+          - entity: counter.kaktus
+          - entity: counter.epipremnum_bedroom
+          - entity: counter.philodendron_bedroom
+        title: Sypialnia
+      - type: entities
+        entities:
+          - entity: counter.kalatea
+          - entity: counter.haworsja
+          - entity: counter.grubosz
+          - entity: counter.monstera
+          - entity: counter.palma_koralowa
+          - entity: counter.zamiokulkas_small
+          - entity: counter.zanokcica
+          - entity: counter.zamiokulkas_big
+          - entity: counter.philodendron_living_room
+          - entity: counter.epipremnum_living_room
+          - entity: counter.hoja_australijska
+        title: Salon
+  - title: System
+    path: system
+    icon: 'mdi:cog'
+    badges: []
+    cards:
+      - type: entities
+        entities:
+          - entity: binary_sensor.rpi_power_status
+          - entity: sensor.disk_free
+          - entity: sensor.disk_use_percent
+          - entity: sensor.last_boot
+          - entity: sensor.memory_free
+          - entity: sensor.memory_use_percent
+          - entity: sensor.processor_temperature
+          - entity: sensor.processor_use_percent
+        title: RasPi
+        show_header_toggle: false
+      - type: entities
+        entities:
+          - entity: sensor.hue_dimmer_switch_1_battery_level
+          - entity: sensor.sypialnia_czujnik_temperatury_battery
+          - entity: sensor.salon_czujnik_temperatury_battery
+          - entity: sensor.czujnik_otwarcia_battery
+        title: Stan baterii
+        show_header_toggle: false
+      - type: entities
+        entities:
+          - entity: binary_sensor.updater
+          - entity: script.restart_ha
+          - entity: script.restart_frontend_themes
+          - entity: script.check_config
+          - entity: sensor.hacs
+            name: HACS
+      - type: entities
+        entities:
+          - entity: binary_sensor.czujnik_otwarcia_contact
+  - title: Test
+    path: test
+    icon: 'mdi:heart'
+    badges: []
+    cards: []
+  - title: Vacuum
+    path: vacuum
+    icon: 'mdi:robot-vacuum'
+    badges: []
+    cards:
+      - type: 'custom:vacuum-card'
+        entity: vacuum.xiaomi_vacuum_cleaner
+        stats:
+          default:
+            - attribute: filter_left
+              unit: hours
+              subtitle: Filter
+            - attribute: side_brush_left
+              unit: hours
+              subtitle: Side brush
+            - attribute: main_brush_left
+              unit: hours
+              subtitle: Main brush
+            - attribute: sensor_dirty_left
+              unit: hours
+              subtitle: Sensors
+              cleaning:
+                - attribute: cleaned_area
+                  unit: m2
+                  subtitle: Cleaning area
+                - attribute: cleaning_time
+                  unit: minutes
+                  subtitle: Cleaning time
+              actions:
+                - name: Clean living room
+                  service: script.clean_living_room
+                  icon: 'mdi:sofa'
+                - name: Clean bedroom
+                  service: script.clean_bedroom
+                  icon: 'mdi:bed-empty'
+                - name: Clean bathroom
+                  service: script.clean_bathroom
+                  icon: 'mdi:shower'
+                - name: Clean kitchen
+                  service: script.clean_kitchen
+                  icon: 'mdi:silverware-fork-knife'

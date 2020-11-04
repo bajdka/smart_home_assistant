@@ -1,0 +1,33 @@
+watering_counters:
+  name: Watering level
+  entities:
+    - counter.monstera
+    - counter.zamiokulkas_big
+    - counter.zamiokulkas_small
+    - counter.grubosz
+    - counter.epipremnum_living_room
+    - counter.philodendron_living_room
+    - counter.palma_koralowa
+    - counter.kalatea
+    - counter.sansewieria_duza
+    - counter.zanokcica
+    - counter.sansewieria_mala
+    - counter.sansewieria_mini
+    - counter.zielistka
+    - counter.aloes
+    - counter.kaktus
+    - counter.philodendron_bedroom
+    - counter.epipremnum_bedroom
+    - counter.fikus_big
+    - counter.fikus_small
+    - counter.haworsja
+    - counter.hoja_australijska
+
+battery_levels:
+  name: Battery Levels
+  entities:
+    - sensor.salon_czujnik_temperatury_battery
+    - sensor.sypialnia_czujnik_temperatury_battery
+    - sensor.czujnik_ruchu_battery
+    - sensor.czujnik_otwarcia_battery
+    - sensor.hue_dimmer_switch_1_battery_level

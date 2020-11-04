@@ -1,0 +1,127 @@
+restart_ha:
+  alias: Restart HA
+  sequence:
+  - service: homeassistant.restart
+    data: {}
+  mode: single
+  icon: mdi:restart
+restart_frontend_themes:
+  alias: Restart frontend themes
+  sequence:
+  - service: frontend.reload_themes
+    data: {}
+  mode: single
+  icon: mdi:restart
+check_config:
+  alias: Check config
+  sequence:
+  - service: homeassistant.check_config
+    data: {}
+  mode: single
+  icon: mdi:cog
+goodnight:
+  alias: Goodnight
+  sequence:
+  - service: light.turn_off
+    data: {}
+    entity_id: all
+  - service: switch.turn_off
+    data: {}
+    entity_id: all
+  - service: media_player.turn_off
+    data: {}
+    entity_id: media_player.samsung_tv_remote
+  - service: media_player.turn_off
+    data: {}
+    entity_id: media_player.google_home_mini
+  - type: brightness_decrease
+    device_id: b6b30a207156ee858c86acd36cb07d05
+    entity_id: light.lampka_nocna
+    domain: light
+  - service: notify.mobile_app_iphone_daria
+    data:
+      message: Dobrej nocy! 🌙
+  mode: single
+  icon: mdi:weather-night
+tv_time:
+  alias: TV time
+  sequence:
+  - type: turn_off
+    device_id: 2808e12340a470102feb586316a5ac90
+    entity_id: light.lampa_sufitowa_2
+    domain: light
+  - type: turn_off
+    device_id: 499b0e90520625e5754c331c4b40b24b
+    entity_id: switch.76886533cc50e3ed7572
+    domain: switch
+  - service: media_player.turn_on
+    data: {}
+    entity_id: media_player.samsung_tv_remote
+  - service: media_player.select_source
+    data:
+      source: Netflix
+    entity_id: media_player.samsung_tv_remote
+  - type: turn_off
+    device_id: adde38eeb4e8bd2834b5d96a6dc76dc8
+    entity_id: light.hue_play_1
+    domain: light
+  - type: turn_off
+    device_id: 43984d263889c8f41118bdb7c5245fcd
+    entity_id: light.hue_play_2
+    domain: light
+  mode: single
+  icon: mdi:television-classic
+clean_bathroom:
+  alias: Clean bathroom
+  sequence:
+  - service: xiaomi_miio.vacuum_clean_segment
+    data:
+      segments:
+      - 20
+      entity_id: vacuum.xiaomi_vacuum_cleaner
+  mode: single
+  icon: mdi:shower
+clean_bedroom:
+  alias: Clean bedroom
+  sequence:
+  - service: xiaomi_miio.vacuum_clean_segment
+    data:
+      segments:
+      - 16
+      entity_id: vacuum.xiaomi_vacuum_cleaner
+  mode: single
+  icon: mdi:bed-empty
+clean_kitchen:
+  alias: Clean kitchen
+  sequence:
+  - service: xiaomi_miio.vacuum_clean_segment
+    data:
+      segments:
+      - 18
+      entity_id: vacuum.xiaomi_vacuum_cleaner
+  mode: single
+  icon: mdi:silverware-fork-knife
+clean_living_room:
+  alias: Clean living room
+  sequence:
+  - service: xiaomi_miio.vacuum_clean_segment
+    data:
+      segments:
+      - 21
+      entity_id: vacuum.xiaomi_vacuum_cleaner
+  mode: single
+  icon: mdi:sofa
+goodmorning:
+  alias: Good morning routine
+  sequence:
+  - service: spotcast.start
+    data:
+      entity_id: media_player.google_home_mini
+      uri: spotify:playlist:74sUjcvpGfdOvCHvgzNEDO
+      random_song: true
+      shuffle: true
+  - service: notify.mobile_app_iphone_daria
+    data:
+      message: Good morning, sunshine! /U0002600
+  mode: single
+  icon: mdi:white-balance-sunny

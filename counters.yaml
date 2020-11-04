@@ -1,0 +1,150 @@
+# Rośliny w salonie
+monstera:
+  name: Monstera dziurawa
+  initial: 10
+  step: 1
+  restore: true
+  maximum: 10
+  icon: mdi:sprout
+zamiokulkas_big:
+  name: Zamiokulkas zamiolistny duży
+  initial: 25
+  step: 1
+  restore: true
+  maximum: 25
+  icon: mdi:sprout  
+zamiokulkas_small:
+  name: Zamiokulkas zamiolistny mały
+  initial: 25
+  step: 1
+  restore: true
+  maximum: 25
+  icon: mdi:sprout
+grubosz:
+  name: Grubosz
+  initial: 14
+  step: 1
+  restore: true
+  maximum: 14
+  icon: mdi:sprout
+epipremnum_living_room:
+  name: Epipremnum złociste
+  initial: 14
+  step: 1
+  restore: true
+  maximum: 14
+  icon: mdi:sprout
+philodendron_living_room:
+  name: Filodendron
+  initial: 14
+  step: 1
+  restore: true
+  maximum: 14
+  icon: mdi:sprout
+palma_koralowa:
+  name: Palma koralowa
+  initial: 7
+  step: 1
+  restore: true
+  maximum: 7
+  icon: mdi:sprout
+kalatea:
+  name: Kalatea
+  initial: 3
+  step: 1
+  restore: true
+  maximum: 3
+  icon: mdi:sprout
+sansewieria_duza:
+  name: Sansewieria duża
+  initial: 14
+  step: 1
+  restore: true
+  maximum: 14
+  icon: mdi:sprout
+zanokcica:
+  name: Zanokcica
+  initial: 3
+  step: 1
+  restore: true
+  maximum: 3
+  icon: mdi:sprout
+
+# Roślin w sypialni
+sansewieria_mala:
+  name: Sansewieria mała
+  initial: 14
+  step: 1
+  restore: true
+  maximum: 14
+  icon: mdi:sprout
+sansewieria_mini:
+  name: Sansewieria mini
+  initial: 14
+  step: 1
+  restore: true
+  maximum: 14
+  icon: mdi:sprout
+zielistka:
+  name: Zielistka
+  initial: 5
+  step: 1
+  restore: true
+  maximum: 5
+  icon: mdi:sprout
+aloes:
+  name: Aloes zwyczajny
+  initial: 14
+  step: 1
+  restore: true
+  maximum: 14
+  icon: mdi:sprout
+kaktus:
+  name: Kaktus
+  initial: 14
+  step: 1
+  restore: true
+  maximum: 14
+  icon: mdi:sprout
+philodendron_bedroom:
+  name: Filodendron
+  initial: 14
+  step: 1
+  restore: true
+  maximum: 14
+  icon: mdi:sprout
+epipremnum_bedroom:
+  name: Epipremnum złociste
+  initial: 14
+  step: 1
+  restore: true
+  maximum: 14
+  icon: mdi:sprout
+fikus_big:
+  name: Fikus większy
+  initial: 7
+  step: 1
+  restore: true
+  maximum: 7
+  icon: mdi:sprout
+fikus_small:
+  name: Fikus mniejszy
+  initial: 7
+  step: 1
+  restore: true
+  maximum: 7
+  icon: mdi:sprout
+haworsja:
+  name: Haworsja wąskolistka
+  initial: 14
+  step: 1
+  restore: true
+  maximum: 14
+  icon: mdi:sprout
+hoja_australijska:
+  name: Hoja australijska
+  initial: 10
+  step: 1
+  restore: true
+  maximum: 10
+  icon: mdi:sprout

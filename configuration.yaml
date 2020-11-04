@@ -1,0 +1,45 @@
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+homeassistant:
+  customize: !include customize.yaml
+
+default_config:
+frontend:
+  themes: !include_dir_merge_named themes
+
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+# Vacuum Roborock
+vacuum:
+  - platform: xiaomi_miio
+    host: !secret VACUUM_IP
+    token: !secret ROBOROCK_VACUUM_TOKEN
+
+# Media players
+spotify:
+  client_id: !secret SPOTIFY_CLIENT_ID
+  client_secret: !secret SPOTIFY_TOKEN
+
+spotcast:
+  sp_dc: !secret SPOTCAST_DC
+  sp_key: !secret SPOTCAST_KEY
+
+media_player:
+  - platform: samsungtv_tizen
+    host: !secret TV_IP
+    port: !secret TV_PORT
+    mac: !secret TV_MAC
+    app_list: '{"Netflix": "11101200001", "YouTube": "111299001912", "Spotify": "3201606009684"}'
+    update_method: smartthings
+    api_key: !secret SMART_THINGS_TOKEN
+    device_id: !secret TV_DEVICE_ID
+
+sensor: !include sensors.yaml
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+counter: !include counters.yaml

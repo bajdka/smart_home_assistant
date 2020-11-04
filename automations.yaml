@@ -1,0 +1,163 @@
+- id: decrease_watering_counters_daily
+  alias: Decrease watering counters daily
+  trigger:
+  - platform: time
+    at: 07:00:00
+  action:
+  - service: counter.decrement
+    data: {}
+    entity_id: all
+  initial_state: true
+  mode: single
+- id: '1603543785769'
+  alias: Pause media on sensor contact
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.czujnik_otwarcia_contact
+    from: 'on'
+    to: 'off'
+  condition: []
+  action:
+  - service: media_player.media_pause
+    data: {}
+    entity_id: media_player.google_home_mini
+  - service: vacuum.pause
+    data: {}
+    entity_id: vacuum.xiaomi_vacuum_cleaner
+  mode: single
+- id: '1603543848710'
+  alias: Resume media on sensor contact
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.czujnik_otwarcia_contact
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: media_player.media_play
+    data: {}
+    entity_id: media_player.google_home_mini
+  mode: single
+- id: '1603544154101'
+  alias: Resume vacuum on sensor contact
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.czujnik_otwarcia_contact
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: vacuum.xiaomi_vacuum_cleaner
+    state: paused
+  action:
+  - service: vacuum.start
+    data: {}
+    entity_id: vacuum.xiaomi_vacuum_cleaner
+  mode: single
+- id: '1603543785769'
+  alias: Pause media on sensor contact
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.czujnik_otwarcia_contact
+    from: 'on'
+    to: 'off'
+  condition: []
+  action:
+  - service: media_player.media_pause
+    data: {}
+    entity_id: media_player.salon
+  - service: vacuum.pause
+    data: {}
+    entity_id: vacuum.xiaomi_vacuum_cleaner
+  mode: single
+- id: '1603543848710'
+  alias: Resume media on sensor contact
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.czujnik_otwarcia_contact
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: media_player.media_play
+    data: {}
+    entity_id: media_player.google_home_mini
+  mode: single
+- id: '1603544154101'
+  alias: Resume vacuum on sensor contact
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.czujnik_otwarcia_contact
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: vacuum.xiaomi_vacuum_cleaner
+    state: paused
+  action:
+  - service: vacuum.start
+    data: {}
+    entity_id: vacuum.xiaomi_vacuum_cleaner
+  mode: single
+- id: notify_if_batteries_are_low
+  alias: Notification on low batteries
+  trigger:
+  - platform: time
+    at: '19:00:00'
+  condition:
+  - condition: or
+    conditions:
+    - condition: template
+      value_template: "{% set min_battery_level = 10 -%} {% set ns = namespace(found=false)\
+        \ -%} {% for entity_id in states.group.battery_levels.attributes.entity_id\
+        \ -%}\n  {% set parts = entity_id.split('.') -%}\n  {% if (states(entity_id)\
+        \ | replace(\"%\",\"\") | int) < min_battery_level -%}\n    {% set ns.found\
+        \ = true -%}\n  {% endif -%}\n{% endfor -%} {{ ns.found }}\n"
+  action:
+  - service: notify.mobile_app_iphone_daria
+    data_template:
+      message: "{%- set min_battery_level = 10 -%}  {{ 'Niski poziom baterii:\\n'\
+        \ }} {%- for entity_id in states.group.battery_levels.attributes.entity_id\
+        \ -%}\n  {%- set parts = entity_id.split('.') -%}\n  {%- if (states(entity_id)\
+        \ | replace(\"%\",\"\") | int) < min_battery_level -%}\n    {{ '\\U0001F50B'\
+        \ }} {{ states[parts[0]][parts[1]].name }}: {{ states(entity_id) }}{{ '%\\\
+        n' }}\n  {%- endif -%}\n{%- endfor -%}\n"
+  - service: notify.mobile_app_czyzyk_iphone
+    data_template:
+      message: "{%- set min_battery_level = 10 -%}  {{ 'Niski poziom baterii:\\n'\
+        \ }} {%- for entity_id in states.group.battery_levels.attributes.entity_id\
+        \ -%}\n  {%- set parts = entity_id.split('.') -%}\n  {%- if (states(entity_id)\
+        \ | replace(\"%\",\"\") | int) < min_battery_level -%}\n    {{ '\\U0001F50B'\
+        \ }} {{ states[parts[0]][parts[1]].name }}: {{ states(entity_id) }}{{ '%\\\
+        n' }}\n  {%- endif -%}\n{%- endfor -%}\n"
+  initial_state: true
+  mode: single
+- id: notify_if_watering_time
+  alias: Notification on watering time
+  trigger:
+  - platform: time
+    at: 08:00:00
+  condition:
+  - condition: or
+    conditions:
+    - condition: template
+      value_template: "{% set ns = namespace(found=false) -%}\n{% for entity_id in\
+        \ states.group.watering_counters.attributes.entity_id -%}\n  {% set parts\
+        \ = entity_id.split('.') -%}\n  {% if (states(entity_id) | int) <= 0 -%}\n\
+        \    {% set ns.found = true -%}\n  {% endif -%}\n{% endfor -%} {{ ns.found\
+        \ }}\n"
+  action:
+  - service: notify.mobile_app_iphone_daria
+    data_template:
+      message: "{{ 'Pora podlać:\\n' }} {%- for entity_id in states.group.watering_counters.attributes.entity_id\
+        \ -%}\n  {%- set parts = entity_id.split('.') -%}\n  {%- if (states(entity_id)\
+        \ | int) <= 0  -%}\n    {{ '\\U0001F331' }} {{ states[parts[0]][parts[1]].name\
+        \ }}{{ '\\n' }}\n  {%- endif -%}\n{%- endfor -%}\n"
+  initial_state: true
+  mode: single

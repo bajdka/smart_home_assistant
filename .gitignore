@@ -1,0 +1,10 @@
+.HA_VERSION
+.cloud
+.storage
+custom_components
+image
+tts
+www
+secrets.yaml
+*.log
+*.db
